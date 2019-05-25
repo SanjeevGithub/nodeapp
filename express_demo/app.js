@@ -4,9 +4,19 @@ const express = require('express')
 const app=express();
 
 app.get('/customer',(req,res)=>{
-    res.write('<H1>Inside HTML tag</H1>')
+    res.write('<H1>Inside HTML tag changes</H1>')
     res.end()
 })
 
-app.listen(3001);
-console.log('listening on 3001');
+app.get('/customer/:id',(req,res)=>{
+
+    res.write(req.params.id);
+    res.end()
+})
+
+const port=process.env.PORT||3001
+
+app.listen(port,()=>{
+    console.log(`listening on ${port}`)
+});
+
